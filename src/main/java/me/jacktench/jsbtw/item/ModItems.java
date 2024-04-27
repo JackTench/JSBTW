@@ -2,7 +2,6 @@ package me.jacktench.jsbtw.item;
 
 import me.jacktench.jsbtw.JSBTW;
 import me.jacktench.jsbtw.ModCreativeModeTab;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
