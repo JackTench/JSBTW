@@ -3,6 +3,7 @@ package me.jacktench.jsbtw.block;
 import me.jacktench.jsbtw.JSBTW;
 import me.jacktench.jsbtw.ModCreativeModeTab;
 import me.jacktench.jsbtw.block.custom.BlockSpeedStone;
+import me.jacktench.jsbtw.block.custom.SlabCraftingTable;
 import me.jacktench.jsbtw.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -22,6 +23,9 @@ public class ModBlocks
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, JSBTW.MODID);
 
     public static final RegistryObject<Block> SPEEDSTONE = registerBlock("speedstone", () -> new BlockSpeedStone(BlockBehaviour.Properties.of(Material.STONE).strength(6f).requiresCorrectToolForDrops()), ModCreativeModeTab.MOD_TAB);
+
+    // Test Code: declaring half slab.
+    public static final RegistryObject<Block> CRAFTING_TABLE_SLAB = registerBlock("craftingtableslab", () -> new SlabCraftingTable(BlockBehaviour.Properties.of(Material.WOOD).strength(5f).requiresCorrectToolForDrops()), ModCreativeModeTab.MOD_TAB);
 
     // Helper methods for registering BlockItems.
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab)
