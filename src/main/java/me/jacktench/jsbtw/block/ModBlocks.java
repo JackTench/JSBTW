@@ -21,7 +21,7 @@ public class ModBlocks
 {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, JSBTW.MODID);
 
-
+    public static final RegistryObject<Block> SPEEDSTONE = registerBlock("speedstone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(6f).requiresCorrectToolForDrops()), ModCreativeModeTab.MOD_TAB);
 
     // Helper methods for registering BlockItems.
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab)
