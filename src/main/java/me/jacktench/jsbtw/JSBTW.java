@@ -1,6 +1,7 @@
 package me.jacktench.jsbtw;
 
 import com.mojang.logging.LogUtils;
+import me.jacktench.jsbtw.block.ModBlocks;
 import me.jacktench.jsbtw.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,6 +24,7 @@ public class JSBTW
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
