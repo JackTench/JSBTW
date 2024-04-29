@@ -21,6 +21,7 @@ public class ModItems
     public static final RegistryObject<Item> BROKEN_STARFALL_BLADE = ITEMS.register("broken_starfall_blade", () -> new Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.MOD_TAB)));
     public static final RegistryObject<Item> CELESTIAL_NEXUS = ITEMS.register("celestial_nexus", () -> new Item(new Item.Properties().tab(ModCreativeModeTab.MOD_TAB)));
     public static final RegistryObject<Item> TINY_COAL = ITEMS.register("tiny_coal", () -> new ItemFuel(new Item.Properties().tab(ModCreativeModeTab.MOD_TAB), 200));
+    public static final RegistryObject<Item> TINY_CHARCOAL = ITEMS.register("tiny_charcoal", () -> new ItemFuel(new Item.Properties().tab(ModCreativeModeTab.MOD_TAB), 200));
 
     public static void register(IEventBus eventBus)
     {
