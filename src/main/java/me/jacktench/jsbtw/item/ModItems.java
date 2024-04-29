@@ -8,6 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tiers;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -22,6 +23,7 @@ public class ModItems
     public static final RegistryObject<Item> CELESTIAL_NEXUS = ITEMS.register("celestial_nexus", () -> new Item(new Item.Properties().tab(ModCreativeModeTab.MOD_TAB)));
     public static final RegistryObject<Item> TINY_COAL = ITEMS.register("tiny_coal", () -> new ItemFuel(new Item.Properties().tab(ModCreativeModeTab.MOD_TAB), 200));
     public static final RegistryObject<Item> TINY_CHARCOAL = ITEMS.register("tiny_charcoal", () -> new ItemFuel(new Item.Properties().tab(ModCreativeModeTab.MOD_TAB), 200));
+    public static final RegistryObject<Item> TINY_COKE = ITEMS.register("tiny_coke", () -> new ItemFuel(new Item.Properties().tab(ModCreativeModeTab.MOD_TAB), 400));
 
     public static void register(IEventBus eventBus)
     {
