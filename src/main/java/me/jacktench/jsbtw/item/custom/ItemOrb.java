@@ -3,6 +3,8 @@ package me.jacktench.jsbtw.item.custom;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -21,6 +23,16 @@ public class ItemOrb extends Item
             "message.orb.10"
     );
 
+    private List<MobEffectInstance> effects = Arrays.asList(
+            // Positive Effects
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1),
+            new MobEffectInstance(MobEffects.DIG_SPEED, 200, 1),
+            // Negative Effects
+            new MobEffectInstance(MobEffects.BLINDNESS, 200, 1),
+            new MobEffectInstance(MobEffects.HARM, 200, 1),
+            new MobEffectInstance(MobEffects.WITHER, 200, 1)
+    );
+
     public ItemOrb(Properties properties)
     {
         super(properties);
@@ -31,6 +43,7 @@ public class ItemOrb extends Item
     {
         if (!level.isClientSide() && hand == InteractionHand.MAIN_HAND) {
             player.sendSystemMessage(Component.translatable(getMessage()));
+            player.addEffect(getEffect());
         }
         return super.use(level, player, hand);
     }
@@ -39,5 +52,11 @@ public class ItemOrb extends Item
     {
         int randomIndex = new Random().nextInt(messageKeys.size());
         return messageKeys.get(randomIndex);
+    }
+
+    public MobEffectInstance getEffect()
+    {
+        int randomIndex = new Random().nextInt(effects.size());
+        return effects.get(randomIndex);
     }
 }
