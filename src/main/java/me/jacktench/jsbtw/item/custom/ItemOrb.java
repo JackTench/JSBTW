@@ -31,7 +31,7 @@ public class ItemOrb extends Item
             new MobEffectInstance(MobEffects.WITHER, 200, 1)
     );
 
-    // User a map to track the last time the item was used by player UUID.
+    // Use a map to track the last time the item was used by player UUID.
     private Map<UUID, Long> lastUseTimes = new HashMap<>();
 
     public ItemOrb(Properties properties)
@@ -47,7 +47,7 @@ public class ItemOrb extends Item
             long currentTime = System.currentTimeMillis();
             long lastUseTime = lastUseTimes.getOrDefault(playerUUID, 0L);
 
-            if (currentTime - lastUseTime  < 60000) {
+            if (currentTime - lastUseTime  < 120000) {
                 return InteractionResultHolder.fail(player.getItemInHand(hand));
             }
 
