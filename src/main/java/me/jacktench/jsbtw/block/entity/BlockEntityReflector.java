@@ -1,6 +1,7 @@
 package me.jacktench.jsbtw.block.entity;
 
 import me.jacktench.jsbtw.block.ModBlockEntities;
+import me.jacktench.jsbtw.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -13,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -45,6 +47,29 @@ public class BlockEntityReflector extends BlockEntity implements MenuProvider
     public BlockEntityReflector(BlockPos pos, BlockState state)
     {
         super(ModBlockEntities.REFLECTOR.get(), pos, state);
+        this.data = new ContainerData() {
+            @Override
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> BlockEntityReflector.this.progress;
+                    case 1 -> BlockEntityReflector.this.maxProgress;
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> BlockEntityReflector.this.progress = value;
+                    case 1 -> BlockEntityReflector.this.maxProgress = value;
+                };
+            }
+
+            @Override
+            public int getCount() {
+                return 2;
+            }
+        };
     }
 
     @Override
@@ -117,6 +142,37 @@ public class BlockEntityReflector extends BlockEntity implements MenuProvider
         // Currently placeholder code.
         if (hasRecipe(entity)) {
 
+            entity.progress++;
+            setChanged(level, pos, state);
+
+            if (entity.progress >= entity.maxProgress) {
+                craftItem(entity);
+            }
+
+        } else {
+            entity.resetProgress();
         }
+    }
+
+    private void resetProgress()
+    {
+        this.progress = 0;
+    }
+
+    private static void craftItem(BlockEntityReflector entity)
+    {
+    }
+
+    private static boolean hasRecipe(BlockEntityReflector entity)
+    {
+        SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+        for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
+        }
+
+        boolean hasOrb = entity.itemHandler.getStackInSlot(1).getItem() == ModItems.ORB.get();
+        boolean hasStar = entity.itemHandler.getStackInSlot(2).getItem() == Items.NETHER_STAR.get();
+
+        return hasOrb;
     }
 }
