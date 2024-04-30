@@ -1,6 +1,7 @@
 package me.jacktench.jsbtw;
 
 import com.mojang.logging.LogUtils;
+import me.jacktench.jsbtw.block.ModBlockEntities;
 import me.jacktench.jsbtw.block.ModBlocks;
 import me.jacktench.jsbtw.item.ModItems;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -27,6 +28,7 @@ public class JSBTW
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
