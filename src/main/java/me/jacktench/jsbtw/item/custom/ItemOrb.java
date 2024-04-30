@@ -28,7 +28,8 @@ public class ItemOrb extends Item
             // Negative Effects
             new MobEffectInstance(MobEffects.BLINDNESS, 200, 1),
             new MobEffectInstance(MobEffects.HARM, 200, 1),
-            new MobEffectInstance(MobEffects.WITHER, 200, 1)
+            new MobEffectInstance(MobEffects.WITHER, 200, 1),
+            new MobEffectInstance(MobEffects.CONFUSION, 200, 1)
     );
 
     // Use a map to track the last time the item was used by player UUID.
