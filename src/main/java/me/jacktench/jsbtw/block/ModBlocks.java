@@ -5,7 +5,6 @@ import me.jacktench.jsbtw.ModCreativeModeTab;
 import me.jacktench.jsbtw.block.custom.BlockGlowingGlass;
 import me.jacktench.jsbtw.block.custom.BlockSpeedStone;
 import me.jacktench.jsbtw.item.ModItems;
-import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
