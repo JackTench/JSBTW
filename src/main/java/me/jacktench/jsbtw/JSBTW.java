@@ -42,6 +42,7 @@ public class JSBTW
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            // The setRenderLayer method is being deprecated post-1.19, I should probably fix this.
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.GLOWING_GLASS.get(), RenderType.translucent());
         }
     }
