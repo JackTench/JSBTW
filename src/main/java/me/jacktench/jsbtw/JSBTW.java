@@ -3,6 +3,8 @@ package me.jacktench.jsbtw;
 import com.mojang.logging.LogUtils;
 import me.jacktench.jsbtw.block.ModBlocks;
 import me.jacktench.jsbtw.item.ModItems;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -40,6 +42,7 @@ public class JSBTW
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.GLOWING_GLASS.get(), RenderType.translucent());
         }
     }
 }
