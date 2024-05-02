@@ -162,6 +162,12 @@ public class BlockEntityReflector extends BlockEntity implements MenuProvider
 
     private static void craftItem(BlockEntityReflector entity)
     {
+        if (hasRecipe(entity)) {
+            entity.itemHandler.extractItem(1, 1, false);
+            entity.itemHandler.extractItem(2, 1, false);
+            entity.itemHandler.setStackInSlot(3, new ItemStack(ModItems.CELESTIAL_NEXUS.get(), entity.itemHandler.getStackInSlot(2).getCount() + 1));
+            entity.resetProgress();
+        }
     }
 
     private static boolean hasRecipe(BlockEntityReflector entity)
