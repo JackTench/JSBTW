@@ -25,6 +25,7 @@ public class ModBlocks
 
     public static final RegistryObject<Block> SPEEDSTONE = registerBlock("speedstone", () -> new BlockSpeedStone(BlockBehaviour.Properties.of(Material.STONE).strength(6f).requiresCorrectToolForDrops()), ModCreativeModeTab.MOD_TAB);
     public static final RegistryObject<Block> GLOWING_GLASS = registerBlock("glowing_glass", () -> new BlockGlowingGlass(Block.Properties.copy(Blocks.GLASS).noOcclusion().lightLevel((state) -> 15)), ModCreativeModeTab.MOD_TAB);
+    public static final RegistryObject<Block> REFLECTOR = registerBlock("reflector", () -> new BlockReflector(Block.Properties.of(Material.METAL).strength(8f).requiresCorrectToolForDrops()), ModCreativeModeTab.MOD_TAB);
 
     // Helper methods for registering BlockItems.
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab)
