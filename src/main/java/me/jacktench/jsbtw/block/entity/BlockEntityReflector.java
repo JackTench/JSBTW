@@ -14,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -171,8 +172,18 @@ public class BlockEntityReflector extends BlockEntity implements MenuProvider
         }
 
         boolean hasOrb = entity.itemHandler.getStackInSlot(1).getItem() == ModItems.ORB.get();
-        boolean hasStar = entity.itemHandler.getStackInSlot(2).getItem() == Items.NETHER_STAR.get();
+        boolean hasStar = entity.itemHandler.getStackInSlot(2).getItem() == Items.NETHER_STAR;
 
-        return hasOrb;
+        return hasOrb && hasStar && canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, new ItemStack(ModItems.CELESTIAL_NEXUS.get(), 1));
+    }
+
+    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack)
+    {
+        return inventory.getItem(3).getItem() == stack.getItem() || inventory.getItem(2).isEmpty();
+    }
+
+    private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory)
+    {
+        return inventory.getItem(3).getMaxStackSize() > inventory.getItem(3).getCount();
     }
 }
